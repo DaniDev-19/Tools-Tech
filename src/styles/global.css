@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+    --color-brand-amber: #ffbf00;
+    --color-brand-cyan: #00f2ff;
+}
+
+@utility text-glow-amber {
+    text-shadow: 0 0 10px rgba(255, 191, 0, 0.4), 0 0 20px rgba(255, 191, 0, 0.2);
+}
+
+@utility text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.4), 0 0 20px rgba(0, 242, 255, 0.2);
+}
+
+@utility text-shadow-deep {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+@utility text-shadow-pop {
+    text-shadow: 1px 1px 0px #000, 2px 2px 0px #000, 3px 3px 0px #000;
+}
+
+@utility animate-blur {
+    animation: blur-pulse 8s infinite alternate ease-in-out;
+}
+
+@utility animate-float {
+    animation: float 6s infinite ease-in-out;
+}
+
+@keyframes blur-pulse {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0.5;
+        filter: blur(40px);
+    }
+    100% {
+        transform: scale(1.5) translate(20px, -20px);
+        opacity: 0.8;
+        filter: blur(60px);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}

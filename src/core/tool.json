@@ -1,0 +1,40 @@
+{
+    "Tool": [
+        {
+            "title": "Configuración",
+            "description": "Acceso directo a los ajustes globales del sistema Android.",
+            "href": "intent://com.android.settings/#Intent;scheme=android-app;end",
+            "icon": "settings"
+        },
+        {
+            "title": "Ajustes de Wi-Fi",
+            "description": "Útil para conectar a red durante procesos de bypass FRP.",
+            "href": "intent:#Intent;action=android.settings.WIFI_SETTINGS;end",
+            "icon": "wifi"
+        },
+        {
+            "title": "Opciones de Desarrollador",
+            "description": "Habilitar depuración USB y desbloqueo OEM rápidamente.",
+            "href": "intent:#Intent;component=com.android.settings/.DevelopmentSettings;end",
+            "icon": "code-xml"
+        },
+        {
+            "title": "Búsqueda Google",
+            "description": "Abrir el navegador para buscar archivos APK de bypass.",
+            "href": "https://www.google.com",
+            "icon": "search"
+        },
+        {
+            "title": "Gestor de Archivos",
+            "description": "Ver archivos descargados o instaladores APK en el dispositivo.",
+            "href": "intent:#Intent;action=android.intent.action.VIEW;type=vnd.android.document/directory;end",
+            "icon": "folder-open"
+        },
+        {
+            "title": "YouTube (Vía Browser)",
+            "description": "Método común para saltar al navegador en ciertos bloqueos.",
+            "href": "intent://www.youtube.com/#Intent;scheme=http;package=com.android.chrome;end",
+            "icon": "youtube"
+        }
+    ]
+}
