@@ -3,13 +3,13 @@
         {
             "title": "Configuración",
             "description": "Acceso directo a los ajustes globales del sistema Android.",
-            "href": "intent:#Intent;action=android.settings.SETTINGS;end",
+            "href": "intent://com.android.settings/#Intent;scheme=android-app;end",
             "icon": "settings"
         },
         {
             "title": "Ajustes de Wi-Fi",
             "description": "Útil para conectar a red durante procesos de bypass FRP.",
-            "href": "intent:#Intent;action=android.settings.WIFI_SETTINGS;end",
+            "href": "intent://action=android.settings.WIFI_SETTINGS;end",
             "icon": "wifi"
         },
         {
@@ -25,9 +25,33 @@
             "icon": "search"
         },
         {
-            "title": "Gestor de Archivos",
+            "title": "Gestor de Archivos 1",
             "description": "Ver archivos descargados o instaladores APK en el dispositivo.",
-            "href": "intent:#Intent;action=android.intent.action.GET_CONTENT;type=*/*;end",
+            "href": "intent://com.android.documentsui/#Intent;scheme=android-app;end",
+            "icon": "folder-open"
+        },
+        {
+            "title": "Gestor de Archivos 2",
+            "description": "Ver archivos descargados o instaladores APK en el dispositivo.",
+            "href": "intent://com.google.android.apps.nbu.files/#Intent;scheme=android-app;end",
+            "icon": "folder-open"
+        },
+        {
+            "title": "Gestor de Archivos 3",
+            "description": "Ver archivos descargados o instaladores APK en el dispositivo.",
+            "href": "intent://com.google.android.documentsui/#Intent;scheme=android-app;end",
+            "icon": "folder-open"
+        },
+        {
+            "title": "Gestor de Archivos 4",
+            "description": "Ver archivos descargados o instaladores APK en el dispositivo.",
+            "href": "intent://com.sec.android.app.myfiles/#Intent;scheme=android-app;end",
+            "icon": "folder-open"
+        },
+        {
+            "title": "Gestor de Archivos 5",
+            "description": "Ver archivos descargados o instaladores APK en el dispositivo.",
+            "href": "intent://com.mi.android.globalFileexplorer/#Intent;scheme=android-app;end",
             "icon": "folder-open"
         },
         {
