@@ -3,19 +3,19 @@
         {
             "title": "Configuración",
             "description": "Acceso directo a los ajustes globales del sistema Android.",
-            "href": "intent://com.android.settings/#Intent;scheme=android-app;end",
+            "href": "intent:#Intent;action=android.settings.SETTINGS;end",
             "icon": "settings"
         },
         {
             "title": "Ajustes de Wi-Fi",
             "description": "Útil para conectar a red durante procesos de bypass FRP.",
-            "href": "intent://com.android.settings/#Intent;scheme=android-app;action=android.settings.WIFI_SETTINGS;end",
+            "href": "intent:#Intent;action=android.settings.WIFI_SETTINGS;end",
             "icon": "wifi"
         },
         {
             "title": "Opciones de Desarrollador",
             "description": "Habilitar depuración USB y desbloqueo OEM rápidamente.",
-            "href": "intent://com.android.settings/#Intent;scheme=android-app;action=android.settings.APPLICATION_DEVELOPMENT_SETTINGS;end",
+            "href": "intent:#Intent;action=android.settings.APPLICATION_DEVELOPMENT_SETTINGS;end",
             "icon": "code-xml"
         },
         {
@@ -27,13 +27,13 @@
         {
             "title": "Gestor de Archivos",
             "description": "Ver archivos descargados o instaladores APK en el dispositivo.",
-            "href": "intent://com.android.documentsui/#Intent;scheme=android-app;action=android.intent.action.GET_CONTENT;type=*/*;end",
+            "href": "intent:#Intent;action=android.intent.action.GET_CONTENT;type=*/*;end",
             "icon": "folder-open"
         },
         {
             "title": "Cuentas (FRP)",
             "description": "Abrir ajustes de cuentas para saltar bloqueos de Google.",
-            "href": "intent://com.android.settings/#Intent;scheme=android-app;action=android.settings.ADD_ACCOUNT_SETTINGS;end",
+            "href": "intent:#Intent;action=android.settings.ADD_ACCOUNT_SETTINGS;end",
             "icon": "user-round-plus"
         },
         {
