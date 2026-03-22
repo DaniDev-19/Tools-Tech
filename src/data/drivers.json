@@ -1,0 +1,44 @@
+[
+    {
+        "name": "Samsung USB Drivers",
+        "version": "v1.7.59",
+        "description": "Drivers oficiales para reconocimiento de equipos Samsung en modo Odin/ADB.",
+        "url": "https://developer.samsung.com/android-usb-driver",
+        "category": "Drivers"
+    },
+    {
+        "name": "Android Utility (FRP Tool)",
+        "version": "v132.00",
+        "description": "Herramienta potente para bypass de Google (FRP), desbloqueo de bootloader y formateos.",
+        "url": "https://androidutilitytool.com/",
+        "category": "Bypass"
+    },
+    {
+        "name": "Odin Flash Tool",
+        "version": "v3.14.4",
+        "description": "Herramienta oficial para flashear firmware en dispositivos Samsung.",
+        "url": "https://samsungodin.com/",
+        "category": "Flasheo"
+    },
+    {
+        "name": "Chimera Tool Installer",
+        "version": "Latest",
+        "description": "Software Profesional para reparación de IMEI, desbloqueo de red y mantenimiento.",
+        "url": "https://chimeratool.com/en/download",
+        "category": "Professional"
+    },
+    {
+        "name": "Advanced IP Scanner",
+        "version": "v2.5.3850",
+        "description": "Herramienta portátil para listar IPs en tu red local rápidamente.",
+        "url": "https://www.advanced-ip-scanner.com/",
+        "category": "Redes"
+    },
+    {
+        "name": "Qualcomm QDLoader 9008",
+        "version": "v2.1.2",
+        "description": "Necesario para revivir equipos en modo EDL.",
+        "url": "https://qdloader9008.com/",
+        "category": "Drivers"
+    }
+]

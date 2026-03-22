@@ -1,0 +1,76 @@
+---
+import { Icon } from "astro-icon/components";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+    class="relative mt-20 border-t border-white/5 bg-black/40 backdrop-blur-md overflow-hidden"
+>
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        <div
+            class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-10"
+        >
+            <div class="max-w-xl">
+                <div class="flex items-center gap-3 mb-4">
+                    <div
+                        class="w-10 h-10 bg-blue-600/20 border border-blue-500/30 rounded-xl flex items-center justify-center p-1 overflow-hidden"
+                    >
+                        <img
+                            src="/logo.png"
+                            alt="Tech Hub Icon"
+                            class="w-full h-full object-contain"
+                        />
+                    </div>
+                    <span
+                        class="text-xl font-black tracking-tighter text-white uppercase"
+                    >
+                        Tools-Tech <span class="text-blue-500">Hub</span>
+                    </span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed italic">
+                    Un espacio dedicado a compartir conocimientos, experiencias
+                    técnicas y soluciones a fallas comunes. Herramientas y guías
+                    creadas por técnicos para técnicos.
+                </p>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a
+                    href="https://zymtaxis.com"
+                    target="_blank"
+                    class="flex items-center gap-3 px-5 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl transition-all group"
+                >
+                    <img
+                        src="/original-mini.ico"
+                        alt="Zymtaxis Icon"
+                        class="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity"
+                    />
+                    <span
+                        class="text-sm font-bold text-gray-400 group-hover:text-white transition-colors"
+                        >zymtaxis.com</span
+                    >
+                </a>
+            </div>
+        </div>
+
+        <!-- Barra Inferior Discreta -->
+        <div
+            class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+            <p
+                class="text-[10px] text-gray-500 font-bold uppercase tracking-[0.2em]"
+            >
+                &copy; {currentYear} Zymtaxis Tech Solutions. Todos los derechos reservados.
+            </p>
+
+            <div
+                class="flex items-center gap-4 text-[9px] font-bold text-gray-600 uppercase tracking-widest"
+            >
+                <span>By DanijDev</span>
+                <span class="w-1 h-1 bg-gray-700 rounded-full"></span>
+                <span>Venezuela 🇻🇪</span>
+            </div>
+        </div>
+    </div>
+</footer>

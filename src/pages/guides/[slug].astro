@@ -1,0 +1,313 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+
+export async function getStaticPaths() {
+  const guides = await getCollection("guides");
+  return guides.map((guide) => ({
+    params: { slug: guide.id },
+    props: { guide },
+  }));
+}
+
+interface Props {
+  guide: CollectionEntry<"guides">;
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+---
+
+<Layout
+  title={`${guide.data.title} | Tools Tech Hub`}
+  description={guide.data.description}
+>
+  <div
+    class="fixed inset-0 bg-linear-to-b from-blue-600/5 to-transparent pointer-events-none -z-20"
+  >
+  </div>
+
+  <main class="max-w-4xl mx-auto px-4 md:px-8 py-16 text-white relative">
+    <!-- Navegación superior -->
+    <a
+      href="/#tab-guides"
+      class="group inline-flex items-center gap-3 text-gray-400 hover:text-blue-400 mb-12 transition-all duration-300 bg-white/5 px-4 py-2 rounded-full border border-white/10 hover:border-blue-500/30"
+    >
+      <Icon
+        name="lucide:arrow-left"
+        class="w-5 h-5 group-hover:-translate-x-1 transition-transform"
+      />
+      <span class="text-sm font-bold uppercase tracking-widest"
+        >Volver al Hub</span
+      >
+    </a>
+
+    <article class="relative">
+      <header class="mb-16">
+        <div class="flex flex-wrap gap-2 mb-6">
+          {
+            guide.data.tags.map((tag) => (
+              <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-extrabold rounded-md uppercase tracking-widest shadow-lg shadow-blue-500/5">
+                {tag}
+              </span>
+            ))
+          }
+        </div>
+
+        <h1
+          class="text-4xl md:text-7xl font-black mb-8 leading-tight tracking-tighter text-glow-cyan bg-linear-to-r from-white to-gray-400 bg-clip-text text-transparent"
+        >
+          {guide.data.title}
+        </h1>
+
+        <div
+          class="p-6 bg-white/5 border-l-4 border-blue-500 rounded-r-2xl backdrop-blur-md mb-8"
+        >
+          <p class="text-xl text-gray-300 italic font-medium leading-relaxed">
+            "{guide.data.description}"
+          </p>
+        </div>
+      </header>
+
+      <div class="guide-content">
+        <Content />
+      </div>
+
+      <footer class="mt-20 pt-10 border-t border-white/10 text-center">
+        <p
+          class="text-gray-500 text-sm font-bold uppercase tracking-widest mb-4"
+        >
+          Fin de la guía técnica
+        </p>
+        <div class="flex justify-center gap-4">
+          <a
+            href="/#tab-guides"
+            class="px-8 py-3 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-colors text-sm font-bold"
+            >Explorar más guías</a
+          >
+        </div>
+      </footer>
+    </article>
+  </main>
+</Layout>
+
+<style is:global>
+  @reference "tailwindcss";
+
+  .guide-content {
+    @apply text-gray-300 leading-relaxed text-lg;
+  }
+
+  .guide-content h2 {
+    @apply text-white text-3xl font-black mt-16 mb-8 flex items-center gap-3 tracking-tight;
+  }
+
+  .guide-content h2::before {
+    content: "";
+    @apply w-2 h-8 rounded-full inline-block;
+    background-color: var(--color-brand-cyan, #00f2ff);
+  }
+
+  .guide-content p {
+    @apply mb-6 text-gray-400;
+  }
+
+  .guide-content strong {
+    @apply font-bold;
+    color: var(--color-brand-cyan, #00f2ff);
+  }
+
+  .guide-content ul {
+    @apply space-y-4 mb-8 ml-4;
+  }
+
+  .guide-content li {
+    @apply relative pl-8 mb-4 leading-relaxed;
+  }
+
+  .guide-content li::before {
+    content: "→";
+    @apply absolute left-0 font-bold;
+    color: var(--color-brand-cyan, #00f2ff);
+  }
+
+  .guide-content ol {
+    @apply space-y-6 mb-8 list-decimal ml-6;
+  }
+
+  .guide-content li > p {
+    @apply m-0;
+  }
+
+  .guide-content blockquote {
+    @apply p-6 rounded-2xl my-10 italic shadow-inner border;
+    background-color: rgba(0, 242, 255, 0.05);
+    border-color: rgba(0, 242, 255, 0.2);
+    color: var(--color-brand-cyan, #00f2ff);
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .guide-content pre {
+    @apply p-6 rounded-2xl my-8 overflow-x-auto border border-white/5;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    width: fit-content;
+    min-width: 200px;
+    max-width: 100%;
+  }
+
+  .guide-content img {
+    @apply rounded-2xl my-8 border border-white/10 shadow-2xl;
+    width: fit-content;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .guide-content h3 {
+    @apply text-xl font-bold text-white mt-10 mb-4 uppercase tracking-wider border-b border-white/5 pb-2;
+  }
+
+  @media (max-width: 768px) {
+    .guide-content h2 {
+      @apply text-2xl mt-12;
+    }
+    .guide-content p {
+      @apply text-base;
+    }
+  }
+
+  .protocol-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-right: 4px;
+    margin-bottom: 4px;
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+  }
+  .protocol-tcp {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+  }
+  .protocol-udp {
+    background-color: rgba(168, 85, 247, 0.1);
+    border-color: rgba(168, 85, 247, 0.2);
+    color: #c084fc;
+  }
+  .protocol-ip {
+    background-color: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+  }
+  .protocol-dhcp {
+    background-color: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+  }
+
+  .wire-sequence {
+    display: inline-flex;
+    width: fit-content;
+    max-width: 100%;
+    gap: 4px;
+    margin: 16px 0;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow-x: auto;
+  }
+  .wire {
+    width: 24px;
+    height: 70px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 4px;
+    font-size: 9px;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.6);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    flex-shrink: 0;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .wire-w-green {
+    background-color: #ffffff;
+    background-image: linear-gradient(
+      45deg,
+      #22c55e 25%,
+      transparent 25%,
+      transparent 50%,
+      #22c55e 50%,
+      #22c55e 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 8px 8px;
+  }
+  .wire-green {
+    background-color: #22c55e;
+  }
+  .wire-w-orange {
+    background-color: #ffffff;
+    background-image: linear-gradient(
+      45deg,
+      #f97316 25%,
+      transparent 25%,
+      transparent 50%,
+      #f97316 50%,
+      #f97316 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 8px 8px;
+  }
+  .wire-orange {
+    background-color: #f97316;
+  }
+  .wire-w-blue {
+    background-color: #ffffff;
+    background-image: linear-gradient(
+      45deg,
+      #3b82f6 25%,
+      transparent 25%,
+      transparent 50%,
+      #3b82f6 50%,
+      #3b82f6 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 8px 8px;
+  }
+  .wire-blue {
+    background-color: #3b82f6;
+  }
+  .wire-w-brown {
+    background-color: #ffffff;
+    background-image: linear-gradient(
+      45deg,
+      #78350f 25%,
+      transparent 25%,
+      transparent 50%,
+      #78350f 50%,
+      #78350f 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 8px 8px;
+  }
+  .wire-brown {
+    background-color: #78350f;
+  }
+</style>

@@ -1,0 +1,89 @@
+{
+    "categories": [
+        {
+            "name": "ADB (Sistema Encendido)",
+            "commands": [
+                {
+                    "label": "Listar Dispositivos",
+                    "command": "adb devices",
+                    "description": "Verifica si el celular está conectado y con depuración activa."
+                },
+                {
+                    "label": "Modelo Exacto",
+                    "command": "adb shell getprop ro.product.model",
+                    "description": "Obtiene el nombre técnico del modelo (ej: SM-G998B)."
+                },
+                {
+                    "label": "Versión Android",
+                    "command": "adb shell getprop ro.build.version.release",
+                    "description": "Verifica la versión de Android instalada en el sistema."
+                },
+                {
+                    "label": "Reiniciar Bootloader",
+                    "command": "adb reboot bootloader",
+                    "description": "Entra en modo Fastboot para flashear o desbloquear."
+                },
+                {
+                    "label": "Reiniciar Recovery",
+                    "command": "adb reboot recovery",
+                    "description": "Accede al menú de recuperación (Wipe Cache / Data)."
+                },
+                {
+                    "label": "Reiniciar Download",
+                    "command": "adb reboot download",
+                    "description": "Modo especial para Samsung (Odin) o MTK."
+                },
+                {
+                    "label": "Sideload (OTA)",
+                    "command": "adb reboot sideload",
+                    "description": "Modo para aplicar actualizaciones desde el PC."
+                },
+                {
+                    "label": "Listar Paquetes",
+                    "command": "adb shell pm list packages",
+                    "description": "Muestra todos los IDs de las aplicaciones instaladas."
+                },
+                {
+                    "label": "Instalar APK",
+                    "command": "adb install app.apk",
+                    "description": "Envía e instala una aplicación directamente al celular."
+                }
+            ]
+        },
+        {
+            "name": "Fastboot (Modo Flash)",
+            "commands": [
+                {
+                    "label": "Check Dispositivos",
+                    "command": "fastboot devices",
+                    "description": "Muestra celulares detectados en modo Fastboot."
+                },
+                {
+                    "label": "Info Completa",
+                    "command": "fastboot getvar all",
+                    "description": "Muestra TODA la info técnica (IMEI, SN, Particiones)."
+                },
+                {
+                    "label": "Estado Bootloader",
+                    "command": "fastboot oem device-info",
+                    "description": "Verifica si está bloqueado (Locked) o abierto (Unlocked)."
+                },
+                {
+                    "label": "Borrar Datos (Wipe)",
+                    "command": "fastboot erase userdata",
+                    "description": "Formatea el equipo desde el cargador de arranque."
+                },
+                {
+                    "label": "Flashear Recovery",
+                    "command": "fastboot flash recovery recovery.img",
+                    "description": "Instalar TWRP u otro recovery personalizado."
+                },
+                {
+                    "label": "Reiniciar Sistema",
+                    "command": "fastboot reboot",
+                    "description": "Sale del modo flash y vuelve al sistema normal."
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,89 @@
+{
+    "categories": [
+        {
+            "name": "Redes & Conectividad (IPCONFIG Suite)",
+            "commands": [
+                {
+                    "label": "IPConfig /all",
+                    "command": "ipconfig /all",
+                    "description": "Muestra toda la info de red (MAC, DHCP, DNS Servers)."
+                },
+                {
+                    "label": "IPConfig /release",
+                    "command": "ipconfig /release",
+                    "description": "Suelta la dirección IP actual (desconecta)."
+                },
+                {
+                    "label": "IPConfig /renew",
+                    "command": "ipconfig /renew",
+                    "description": "Renueva la dirección IP desde el servidor DHCP."
+                },
+                {
+                    "label": "IPConfig /flushdns",
+                    "command": "ipconfig /flushdns",
+                    "description": "Limpia la caché de resolución DNS (soluciona navegación)."
+                },
+                {
+                    "label": "IPConfig /displaydns",
+                    "command": "ipconfig /displaydns",
+                    "description": "Muestra el contenido actual de la caché DNS."
+                },
+                {
+                    "label": "IPConfig /registerdns",
+                    "command": "ipconfig /registerdns",
+                    "description": "Actualiza la configuración de DHCP y vuelve a registrar los nombres DNS."
+                }
+            ]
+        },
+        {
+            "name": "Diagnóstico de Red Avanzado",
+            "commands": [
+                {
+                    "label": "Tabla ARP",
+                    "command": "arp -a",
+                    "description": "Lista de IPs y MACs detectadas en la red local actual."
+                },
+                {
+                    "label": "Reset de Red",
+                    "command": "netstat -rn",
+                    "description": "Muestra la tabla de enrutamiento (Routing Table) de Windows."
+                },
+                {
+                    "label": "Netstat (Conexiones)",
+                    "command": "netstat -an | findstr \"ESTABLISHED\"",
+                    "description": "Lista las conexiones de red activas y establecidas."
+                },
+                {
+                    "label": "Prueba de Salto (Tracert)",
+                    "command": "tracert 1.1.1.1",
+                    "description": "Traza la ruta para ver en qué servidor se interrumpe la conexión."
+                }
+            ]
+        },
+        {
+            "name": "Soporte de Sistema (Hardware/Admin)",
+            "commands": [
+                {
+                    "label": "Nro Serie (BIOS)",
+                    "command": "wmic bios get serialnumber",
+                    "description": "Obtiene el Serial Number oficial sin abrir la laptop/PC."
+                },
+                {
+                    "label": "Info Sistema",
+                    "command": "systeminfo",
+                    "description": "Reporte completo de Hardware, Windows y parches instalados."
+                },
+                {
+                    "label": "DISM (Repair)",
+                    "command": "DISM /Online /Cleanup-Image /RestoreHealth",
+                    "description": "Repara la imagen de Windows (Kit de reparación de sistema)."
+                },
+                {
+                    "label": "Chkdsk Pro",
+                    "command": "chkdsk C: /f /r /x",
+                    "description": "Reparación profunda del disco duro (requiere reinicio)."
+                }
+            ]
+        }
+    ]
+}

@@ -35,6 +35,7 @@
         opacity: 0.5;
         filter: blur(40px);
     }
+
     100% {
         transform: scale(1.5) translate(20px, -20px);
         opacity: 0.8;
@@ -43,10 +44,124 @@
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-20px);
     }
+}
+
+.protocol-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    border-width: 1px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.protocol-tcp {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+.protocol-udp {
+    background-color: rgba(168, 85, 247, 0.1);
+    border-color: rgba(168, 85, 247, 0.2);
+    color: #c084fc;
+}
+
+.protocol-ip {
+    background-color: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+}
+
+.protocol-dhcp {
+    background-color: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+}
+
+.wire-sequence {
+    display: flex;
+    gap: 4px;
+    margin: 16px 0;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow-x: auto;
+}
+
+.wire {
+    width: 24px;
+    height: 70px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 4px;
+    font-size: 9px;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.6);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    flex-shrink: 0;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.wire-w-green {
+    background-color: #ffffff;
+    border-color: rgba(34, 197, 94, 0.4);
+    background-image: linear-gradient(45deg, #22c55e 25%, transparent 25%, transparent 50%, #22c55e 50%, #22c55e 75%, transparent 75%, transparent);
+    background-size: 8px 8px;
+}
+
+.wire-green {
+    background-color: #22c55e;
+}
+
+.wire-w-orange {
+    background-color: #ffffff;
+    border-color: rgba(249, 115, 22, 0.4);
+    background-image: linear-gradient(45deg, #f97316 25%, transparent 25%, transparent 50%, #f97316 50%, #f97316 75%, transparent 75%, transparent);
+    background-size: 8px 8px;
+}
+
+.wire-orange {
+    background-color: #f97316;
+}
+
+.wire-w-blue {
+    background-color: #ffffff;
+    border-color: rgba(59, 130, 246, 0.4);
+    background-image: linear-gradient(45deg, #3b82f6 25%, transparent 25%, transparent 50%, #3b82f6 50%, #3b82f6 75%, transparent 75%, transparent);
+    background-size: 8px 8px;
+}
+
+.wire-blue {
+    background-color: #3b82f6;
+}
+
+.wire-w-brown {
+    background-color: #ffffff;
+    border-color: rgba(120, 53, 15, 0.4);
+    background-image: linear-gradient(45deg, #78350f 25%, transparent 25%, transparent 50%, #78350f 50%, #78350f 75%, transparent 75%, transparent);
+    background-size: 8px 8px;
+}
+
+.wire-brown {
+    background-color: #78350f;
 }

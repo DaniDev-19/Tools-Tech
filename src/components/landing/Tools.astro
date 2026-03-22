@@ -1,21 +1,78 @@
 ---
 import data from "../../core/tool.json";
 import { Icon } from "astro-icon/components";
+import ADBConsole from "../tools/ADBConsole.astro";
+import { getCollection } from "astro:content";
+import drivers from "../../data/drivers.json";
+import pcCommands from "../../data/pc_commands.json";
+
 const { Tool } = data;
+const guides = await getCollection("guides");
 ---
 
-<div class="relative justify-center m-10 p-10">
-    <h2 class="text-5xl font-bold text-center text-white text-glow-cyan mb-12">
-        Tools Tech
-    </h2>
+<div class="relative justify-center m-4 md:m-10 p-4 md:p-10">
+    <div class="flex flex-col items-center mb-12">
+        <div
+            class="w-24 h-24 mb-6 relative group transform hover:scale-110 transition-transform duration-500"
+        >
+            <div
+                class="absolute inset-0 bg-blue-500/20 blur-2xl rounded-full group-hover:bg-blue-500/40 transition-colors"
+            >
+            </div>
+            <img
+                src="/logo.png"
+                alt="Tools Tech Logo"
+                class="w-full h-full object-contain relative z-10 drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]"
+            />
+        </div>
+        <h2
+            class="text-3xl md:text-5xl font-black text-center text-white text-glow-cyan tracking-tighter uppercase"
+        >
+            Tools-Tech <span class="text-blue-500">Hub</span>
+        </h2>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-16">
+        <button
+            data-tab="intents"
+            class="tab-btn active px-8 py-3 rounded-2xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all cursor-pointer"
+        >
+            Android Intents
+        </button>
+        <button
+            data-tab="adb"
+            class="tab-btn px-8 py-3 rounded-2xl bg-white/5 border border-white/10 text-gray-400 font-bold hover:bg-white/10 transition-all cursor-pointer"
+        >
+            ADB Console
+        </button>
+        <button
+            data-tab="guides"
+            class="tab-btn px-8 py-3 rounded-2xl bg-white/5 border border-white/10 text-gray-400 font-bold hover:bg-white/10 transition-all cursor-pointer"
+        >
+            Guías & SEO
+        </button>
+        <button
+            data-tab="downloads"
+            class="tab-btn px-8 py-3 rounded-2xl bg-white/5 border border-white/10 text-gray-400 font-bold hover:bg-white/10 transition-all cursor-pointer"
+        >
+            Descargas
+        </button>
+        <button
+            data-tab="pc"
+            class="tab-btn px-8 py-3 rounded-2xl bg-white/5 border border-white/10 text-gray-400 font-bold hover:bg-white/10 transition-all cursor-pointer"
+        >
+            PC Terminal
+        </button>
+    </div>
 
     <section
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto px-4"
+        id="content-intents"
+        class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl mx-auto px-4"
     >
         {
             Tool.map((item) => (
                 <div class="group relative bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-md hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1">
-                    <div class="mb-4">
+                    <div class="mb-4 text-left">
                         <div class="w-12 h-12 mb-4 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform duration-300">
                             <Icon
                                 name={`lucide:${item.icon}`}
@@ -29,20 +86,245 @@ const { Tool } = data;
                             {item.description}
                         </p>
                     </div>
-
                     <div class="mt-4">
                         <a
                             href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             class="w-full py-3 px-6 text-center text-white font-semibold rounded-xl bg-linear-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-lg shadow-blue-500/20 transition-all duration-300 active:scale-95 flex items-center justify-center gap-2"
                         >
                             <span class="text-sm">Abrir Herramienta</span>
                             <Icon name="lucide:external-link" class="w-6 h-6" />
                         </a>
                     </div>
-
                     <div class="absolute inset-0 border border-cyan-500/0 group-hover:border-cyan-500/30 rounded-2xl pointer-events-none transition-all duration-300" />
                 </div>
             ))
         }
     </section>
+
+    <section id="content-adb" class="tab-content hidden">
+        <ADBConsole />
+    </section>
+
+    <section
+        id="content-guides"
+        class="tab-content hidden w-full max-w-6xl mx-auto px-4"
+    >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {
+                guides.map((guide) => (
+                    <a
+                        href={`/guides/${guide.id}`}
+                        class="group relative p-8 bg-white/5 border border-white/10 rounded-3xl hover:bg-white/10 transition-all duration-300"
+                    >
+                        <div class="relative z-10 text-left">
+                            <div class="flex gap-2 mb-4">
+                                {guide.data.tags.map((tag: string) => (
+                                    <span class="text-[10px] font-bold uppercase tracking-wider text-blue-400 bg-blue-400/10 px-2 py-1 rounded">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                            <h3 class="text-2xl font-extrabold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                                {guide.data.title}
+                            </h3>
+                            <p class="text-gray-400 text-sm italic">
+                                {guide.data.description}
+                            </p>
+                            <div class="mt-6 flex items-center gap-2 text-xs text-gray-500 font-bold">
+                                <span>Leer guía completa</span>
+                                <Icon
+                                    name="lucide:arrow-right"
+                                    class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                                />
+                            </div>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+    </section>
+
+    <!-- Sección de Descargas -->
+    <section
+        id="content-downloads"
+        class="tab-content hidden w-full max-w-6xl mx-auto px-4"
+    >
+        <div
+            class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden backdrop-blur-xl"
+        >
+            <table class="w-full text-left">
+                <thead
+                    class="bg-white/5 border-b border-white/10 text-xs font-bold uppercase text-gray-400"
+                >
+                    <tr>
+                        <th class="px-6 py-4">Nombre / Versión</th>
+                        <th class="px-6 py-4">Categoría</th>
+                        <th class="px-6 py-4 hidden md:table-cell"
+                            >Descripción</th
+                        >
+                        <th class="px-6 py-4 text-right">Acción</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5">
+                    {
+                        drivers.map((item) => (
+                            <tr class="hover:bg-white/5 transition-colors group">
+                                <td class="px-6 py-4">
+                                    <div class="text-white font-bold">
+                                        {item.name}
+                                    </div>
+                                    <div class="text-[10px] text-blue-400 uppercase tracking-tighter">
+                                        {item.version}
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="px-2 py-1 bg-white/5 rounded-md text-[10px] text-gray-300 uppercase border border-white/10">
+                                        {item.category}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 hidden md:table-cell text-xs text-gray-400 italic">
+                                    {item.description}
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <a
+                                        href={item.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="inline-flex items-center gap-2 p-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-all active:scale-95"
+                                    >
+                                        <Icon
+                                            name="lucide:download"
+                                            class="w-4 h-4"
+                                        />
+                                    </a>
+                                </td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Sección de PC Terminal -->
+    <section
+        id="content-pc"
+        class="tab-content hidden w-full max-w-5xl mx-auto px-4"
+    >
+        <div class="space-y-10">
+            {
+                pcCommands.categories.map((cat) => (
+                    <div class="bg-black/40 border border-white/5 rounded-3xl overflow-hidden backdrop-blur-md shadow-2xl">
+                        <div class="bg-white/5 px-8 py-4 border-b border-white/5 flex items-center gap-3">
+                            <div class="flex gap-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-red-500/50" />
+                                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50" />
+                                <div class="w-2.5 h-2.5 rounded-full bg-green-500/50" />
+                            </div>
+                            <h3 class="text-xs font-black uppercase tracking-[0.2em] text-gray-500">
+                                {cat.name}
+                            </h3>
+                        </div>
+                        <div class="p-4 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {cat.commands.map((cmd) => (
+                                <div class="group flex items-start justify-between p-4 bg-white/5 hover:bg-white/10 border border-white/5 rounded-2xl transition-all h-full">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                            <span class="text-[10px] font-bold text-blue-400 uppercase tracking-wider">
+                                                {cmd.label}
+                                            </span>
+                                        </div>
+                                        <code class="block font-mono text-xs text-white mb-2 break-all group-hover:text-blue-200 transition-colors">
+                                            {cmd.command}
+                                        </code>
+                                        <p class="text-[9px] text-gray-500 italic leading-relaxed">
+                                            {cmd.description}
+                                        </p>
+                                    </div>
+                                    <button
+                                        class="copy-pc-btn ml-4 p-2 bg-white/5 hover:bg-blue-500 text-white rounded-lg transition-all active:scale-90"
+                                        data-copy={cmd.command}
+                                        title="Copiar comando"
+                                    >
+                                        <Icon
+                                            name="lucide:copy"
+                                            class="w-4 h-4"
+                                        />
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
 </div>
+
+<style>
+    @reference "tailwindcss";
+    .tab-btn.active {
+        @apply bg-blue-600/20 border-blue-500/50 text-blue-400 shadow-lg shadow-blue-500/10;
+    }
+</style>
+
+<script>
+    function initTabs() {
+        const tabs = document.querySelectorAll(".tab-btn");
+        const contents = document.querySelectorAll(".tab-content");
+
+        tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+                const target = (tab as HTMLElement).getAttribute("data-tab");
+
+                tabs.forEach((t) => {
+                    t.classList.remove("active");
+                    t.classList.replace("text-white", "text-gray-400");
+                });
+
+                tab.classList.add("active");
+                tab.classList.replace("text-gray-400", "text-white");
+
+                contents.forEach((c) => c.classList.add("hidden"));
+                document
+                    .getElementById(`content-${target}`)
+                    ?.classList.remove("hidden");
+
+                // Actualizar el hash de la URL sin recargar la página
+                if (history.pushState) {
+                    history.pushState(null, "", `#tab-${target}`);
+                } else {
+                    location.hash = `#tab-${target}`;
+                }
+            });
+        });
+
+        // Copiado de comandos de PC
+        document.querySelectorAll(".copy-pc-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const text = btn.getAttribute("data-copy");
+                if (text) {
+                    navigator.clipboard.writeText(text);
+                    const original = btn.innerHTML;
+                    btn.innerHTML =
+                        '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check text-green-500"><path d="M20 6 9 17l-5-5"/></svg>';
+                    setTimeout(() => (btn.innerHTML = original), 2000);
+                }
+            });
+        });
+
+        const hash = window.location.hash.replace("#tab-", "");
+        if (hash) {
+            const targetTab = document.querySelector(
+                `[data-tab="${hash}"]`,
+            ) as HTMLElement;
+            targetTab?.click();
+        }
+    }
+
+    initTabs();
+    document.addEventListener("astro:after-swap", initTabs);
+</script>
